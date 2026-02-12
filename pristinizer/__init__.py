@@ -1,11 +1,39 @@
 """
-Pristinizer: Automatic Data Cleaning and EDA package
+pristinizer
+-----------
+
+A lightweight Python package for automatic data cleaning,
+exploratory data analysis (EDA), and missing value visualization.
+
+Core Features:
+- clean(): Automatically clean datasets
+- summarize(): Generate dataset summary
+- missing_matrix(): Visualize missing values as matrix
+- missing_heatmap(): Visualize missing values as heatmap
+- missing_bar(): Visualize missing values as bar chart
 """
 
+# Cleaning
 from .cleaner import clean
-from .eda import analyze
-from .missing import visualize_missing
 
-__all__ = ["clean", "analyze", "visualize_missing"]
+# EDA
+from .eda import summarize
 
+# Visualization
+from .missing import (
+    missing_matrix,
+    missing_heatmap,
+    missing_bar,
+)
+
+# Version
 __version__ = "0.1.0"
+
+# Public API
+__all__ = [
+    "clean",
+    "summarize",
+    "missing_matrix",
+    "missing_heatmap",
+    "missing_bar",
+]

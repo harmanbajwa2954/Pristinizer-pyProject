@@ -1,6 +1,7 @@
 import pandas as pd
+import numpy as np
 
-def analyze(df):
+def summarize(df):
 
     summary = {
         'column':[col for col in df.columns],
@@ -13,12 +14,13 @@ def analyze(df):
     total_rows = len(df)
 
     for col in df.columns:
-        summary['datatype'].append(df[col].dtype)
-        summary['missing_count'].append(df[col].isNull().sum())
-        summary['missing_%'].append((df[col].isNull().sum()/total_rows)*100)
+        summary['datatype'].append(str(df[col].dtype))
+        summary['missing_count'].append(df[col].isnull().sum())
+        summary['missing_%'].append(np.ceil((df[col].isnull().sum()/total_rows)*100))
         summary['unique_count'].append(df[col].nunique())
         
     
+    fd = pd.DataFrame(summary)
 
-    return df
+    return fd
 
