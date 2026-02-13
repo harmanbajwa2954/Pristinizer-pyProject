@@ -16,7 +16,8 @@ def summarize(df):
     for col in df.columns:
         summary['datatype'].append(str(df[col].dtype))
         summary['missing_count'].append(df[col].isnull().sum())
-        summary['missing_%'].append(np.ceil((df[col].isnull().sum()/total_rows)*100))
+        per = ((df[col].isnull().sum()/total_rows)*100).round(2)
+        summary['missing_%'].append(per)
         summary['unique_count'].append(df[col].nunique())
         
     
